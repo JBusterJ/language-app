@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language App</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
+
+<body onload="index = 0;">
+    <h1 style="padding: 30px 30px 0px 30px;">Language App first and <b style="color: red">final</b> version</h1>
+    <p style="padding-left: 30px; color: orange">Prototype version, don't mind if it's not working properly.</p>
+    <div style="position: absolute; backdrop-filter: blur(10px); width: 100%; height: 100%; z-index: -1;"></div>
+    <div style="font-size: 55px;">
+        <i class="bi bi-person-fill fa-10x" id="notLoggedIn"></i>
+    </div>
+    <div style="font-size: 15px;">
+        <i class="bi bi-box-arrow-right" id="signout"></i>
+        <img src="" alt="" onerror="this.style.display = 'none'" id="blah" class="pfpTR">
+    </div>
+    <div id="languageChoices" style="display: none">
+        <button type="button" name="button" style="border-radius: 50%; height: 100px; width: 100px;"
+            onclick="setLanguage('german')">German</button>
+        <button type="button" name="button" style="border-radius: 50%; height: 100px; width: 100px;"
+            onclick="setLanguage('english')">English</button>
+    </div>
+    <div id="info4">
+        <div style="margin-left: 30px;">
+            <button onclick='signOut()' id="signoutbutton" style="visibility: hidden;">Sign Out</button>
+            <div id="posts-collection"></div>
+
+            <br>
+
+            <br>
+
+            <div class="sign-up" id="signupdiv">
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="Choose a cool Username." id="uname" required><br>
+                <input type="text" placeholder="Tell us your email. We won't share it." id="email" required><br>
+                <input type="password" placeholder="Choose a secure password." id="pwd" required><br>
+                <input type="password" placeholder="Confirm your password." id="confPwd" required><br>
+                <button onclick="createAccount();">Submit</button>
+                <input type="file" id="avatar" onchange="getDataUrl(this);" required>
+            </div>
+            <br>
+            <br>
+            <div class="sign-up" id="signindiv">
+                <h2>Sign In</h2>
+                <input type="text" placeholder="What's your username." id="uname1"><br>
+                <input type="text" placeholder="Tell us your email." id="email1"><br>
+                <input type="password" placeholder="What's your password." id="pwd1"><br>
+                <button
+                    onclick='login(true, document.getElementById("uname1").value, document.getElementById("email1").value, document.getElementById("pwd1").value, true)'>Login</button>
+            </div>
+            <br>
+            <br>
+        </div>
+
+    </div>
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/190177/marked.js"></script>
+
+    <script src="scripts/script.js"></script>
+
+</html>
